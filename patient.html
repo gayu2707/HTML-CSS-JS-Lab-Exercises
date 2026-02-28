@@ -1,0 +1,124 @@
+{
+  "patients": [
+    {
+      "patientId": 201,
+      "info": {
+        "name": "Ravi",
+        "age": 35,
+        "gender": "Male",
+        "disease": "Fever",
+        "doctor": "Dr. Kumar",
+        "ward": "General",
+        "admissionDate": "2025-02-01",
+        "phone": "9876543210",
+        "city": "Chennai",
+        "billAmount": 12000
+      }
+    }
+  ]
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Management</title>
+</head>
+<body>
+<h2>Hospital Management System Using JSON</h2>
+
+<script>
+let hospital = {
+    patients: []
+};
+
+/* INSERT PATIENT */
+function insertPatient(patientId, info) {
+    hospital.patients.push({ patientId, info });
+    console.log("Patient Inserted");
+}
+
+/* DELETE PATIENT */
+function deletePatient(patientId) {
+    hospital.patients = hospital.patients.filter(p => p.patientId !== patientId);
+    console.log("Patient Deleted");
+}
+
+/* MODIFY PATIENT */
+function modifyPatient(patientId, newInfo) {
+    for (let p of hospital.patients) {
+        if (p.patientId === patientId) {
+            p.info = newInfo;
+            console.log("Patient Updated");
+            return;
+        }
+    }
+    console.log("Patient Not Found");
+}
+
+/* SEARCH BY INTEGER (Patient ID) */
+function searchByPatientId(patientId) {
+    let patient = hospital.patients.find(p => p.patientId === patientId);
+    console.log(patient ? patient : "Not Found");
+}
+
+/* SEARCH BY STRING (Disease / Doctor) */
+function searchByString(value) {
+    let result = hospital.patients.filter(p =>
+        p.info.disease === value || p.info.doctor === value
+    );
+    console.log(result.length ? result : "Not Found");
+}
+
+/* DISPLAY ALL PATIENTS */
+function displayPatients() {
+    console.log(hospital.patients);
+}
+
+/* SAMPLE DATA */
+insertPatient(201, {
+    name: "Ravi",
+    age: 35,
+    gender: "Male",
+    disease: "Fever",
+    doctor: "Dr. Kumar",
+    ward: "General",
+    admissionDate: "2025-02-01",
+    phone: "9876543210",
+    city: "Chennai",
+    billAmount: 12000
+});
+
+insertPatient(202, {
+    name: "Meena",
+    age: 29,
+    gender: "Female",
+    disease: "Diabetes",
+    doctor: "Dr. Sharma",
+    ward: "Special",
+    admissionDate: "2025-02-03",
+    phone: "9123456789",
+    city: "Coimbatore",
+    billAmount: 25000
+});
+
+/* OPERATIONS */
+searchByPatientId(201);
+searchByString("Diabetes");
+modifyPatient(201, {
+    name: "Ravi Kumar",
+    age: 36,
+    gender: "Male",
+    disease: "Viral Fever",
+    doctor: "Dr. Kumar",
+    ward: "General",
+    admissionDate: "2025-02-01",
+    phone: "9876543210",
+    city: "Chennai",
+    billAmount: 15000
+});
+deletePatient(202);
+displayPatients();
+</script>
+
+</body>
+</html>

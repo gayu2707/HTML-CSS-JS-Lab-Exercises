@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hide and Show Image</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        img {
+            width: 300px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Hide and Show Image</h2>
+
+    <button onclick="toggleImage()">Hide / Show Image</button>
+
+    <br>
+
+    <!-- Use your local image -->
+    <img id="myImage" src="pic.webp" alt="My Image">
+
+    <script>
+        let image = document.getElementById("myImage");
+
+        function toggleImage() {
+            if (image.style.display === "none") {
+                image.style.display = "block";
+            } else {
+                image.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Tree</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 100vh;
+    background-color: #87ceeb; /* sky blue */
+  }
+
+  .tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Trunk */
+  .trunk {
+    width: 30px;
+    height: 120px;
+    background-color: #8b4513; /* brown */
+    border-radius: 5px;
+  }
+
+  /* Leaves */
+  .leaves {
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 80px solid #228B22; /* forest green */
+    margin-bottom: -30px;
+  }
+
+  .leaves:nth-child(2) {
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 70px solid #2e8b57; /* darker green */
+    margin-bottom: -25px;
+  }
+
+  .leaves:nth-child(3) {
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 60px solid #006400; /* even darker green */
+    margin-bottom: -20px;
+  }
+</style>
+</head>
+<body>
+  <div class="tree">
+    <div class="leaves"></div>
+    <div class="leaves"></div>
+    <div class="leaves"></div>
+    <div class="trunk"></div>
+  </div>
+</body>
+</html>

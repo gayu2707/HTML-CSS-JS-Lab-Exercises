@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Switch Statement with Console</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Enter a number (1-9)</h3>
+<input type="number" id="numInput" placeholder="Enter number"><br>
+<button onclick="checkNumber()">Check Number</button>
+
+<p>Open your browser console to see the output.</p>
+
+<script>
+function checkNumber() {
+    var n = parseInt(document.getElementById("numInput").value);
+
+    switch(n) {
+        case 1:
+            console.log("ONE");
+            break;
+        case 2:
+            console.log("TWO");
+            break;
+        case 3:
+            console.log("THREE");
+            break;
+        case 4:
+            console.log("FOUR");
+            break;
+        case 5:
+            console.log("FIVE");
+            break;
+        case 6:
+            console.log("SIX");
+            break;
+        case 7:
+            console.log("SEVEN");
+            break;
+        case 8:
+            console.log("EIGHT");
+            break;
+        case 9:
+            console.log("NINE");
+            break;
+        default:
+            console.log("PLEASE TRY AGAIN");
+    }
+}
+</script>
+
+</body>
+</html>

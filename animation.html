@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Emotion Weather System</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial;
+}
+
+/* SKY */
+#sky {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(#87ceeb, #e0f6ff);
+    transition: background 1s;
+}
+
+/* CONTROLS */
+#controls {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+
+button {
+    padding: 8px 14px;
+    margin: 4px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* SIMPLE TREE */
+.tree {
+    position: absolute;
+    bottom: 0;
+    left: 45%;
+    transform-origin: bottom center;
+    transition: transform 0.15s ease-out;
+}
+
+.trunk {
+    width: 18px;
+    height: 120px;
+    background: #6b3e26;
+    margin: auto;
+}
+
+.crown {
+    width: 90px;
+    height: 90px;
+    background: #2e8b57;
+    border-radius: 50%;
+    margin-bottom: -20px;
+}
+
+/* CLOUD */
+.cloud {
+    position: absolute;
+    top: 80px;
+    width: 120px;
+    height: 45px;
+    background: white;
+    border-radius: 50px;
+    animation: cloudMove linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+    content: '';
+    position: absolute;
+    background: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    top: -25px;
+}
+
+.cloud::before { left: 15px; }
+.cloud::after { right: 15px; }
+
+@keyframes cloudMove {
+    from { left: -150px; }
+    to { left: 110vw; }
+}
+
+/* RAIN */
+.drop {
+    position: absolute;
+    width: 2px;
+    height: 18px;
+    background: #5dade2;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    from { top: -20px; }
+    to { top: 100vh; }
+}
+
+/* BUTTERFLY */
+.butterfly {
+    position: absolute;
+    font-size: 22px;
+    animation: flyAcross linear infinite;
+}
+
+@keyframes flyAcross {
+    from { left: -50px; }
+    to { left: 110vw; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="sky">
+
+    <div id="controls">
+        <button onclick="setEmotion('happy')">😊 Happy</button>
+        <button onclick="setEmotion('calm')">😌 Calm</button>
+        <button onclick="setEmotion('sad')">😔 Sad</button>
+        <button onclick="setEmotion('angry')">😡 Angry</button>
+    </div>
+
+    <!-- TREE -->
+    <div class="tree" id="tree">
+        <div class="crown"></div>
+        <div class="trunk"></div>
+    </div>
+
+</div>
+
+<script>
+const sky = document.getElementById("sky");
+const tree = document.getElementById("tree");
+
+/* CLEAR SCENE */
+function clearScene() {
+    document.querySelectorAll('.cloud,.drop,.butterfly').forEach(e => e.remove());
+}
+
+/* EMOTIONS */
+function setEmotion(emotion) {
+    clearScene();
+
+    if (emotion === "happy") {
+        sky.style.background = "linear-gradient(#87ceeb, #fffacd)";
+        addClouds();
+        addButterflies(4);
+    }
+
+    if (emotion === "calm") {
+        sky.style.background = "linear-gradient(#b3e5fc, #e1f5fe)";
+        addClouds();
+        addButterflies(2);
+    }
+
+    if (emotion === "sad") {
+        sky.style.background = "linear-gradient(#757575, #bdbdbd)";
+        rain(120);
+    }
+
+    if (emotion === "angry") {
+        sky.style.background = "linear-gradient(#263238, #000)";
+        rain(200);
+    }
+}
+
+/* CLOUDS */
+function addClouds() {
+    for (let i = 0; i < 2; i++) {
+        const c = document.createElement("div");
+        c.className = "cloud";
+        c.style.top = 80 + i * 70 + "px";
+        c.style.animationDuration = (40 + i * 20) + "s";
+        sky.appendChild(c);
+    }
+}
+
+/* RAIN */
+function rain(count) {
+    for (let i = 0; i < count; i++) {
+        const d = document.createElement("div");
+        d.className = "drop";
+        d.style.left = Math.random() * innerWidth + "px";
+        d.style.animationDuration = (Math.random() + 0.5) + "s";
+        sky.appendChild(d);
+    }
+}
+
+/* BUTTERFLIES */
+function addButterflies(count) {
+    for (let i = 0; i < count; i++) {
+        const b = document.createElement("div");
+        b.className = "butterfly";
+        b.innerHTML = "🦋";
+        b.style.top = 200 + Math.random() * 200 + "px";
+        b.style.animationDuration = (8 + Math.random() * 6) + "s";
+        sky.appendChild(b);
+    }
+}
+
+/* WIND FROM CURSOR */
+document.addEventListener("mousemove", e => {
+    const center = window.innerWidth / 2;
+    const wind = (e.clientX - center) / center;   // -1 to 1
+    tree.style.transform = `rotate(${wind * 8}deg)`;
+});
+</script>
+
+</body>
+</html>

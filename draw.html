@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glowing Pulsating Heart</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #111; /* dark background for glow */
+  }
+
+  .heart {
+    position: relative;
+    width: 100px;
+    height: 90px;
+    background-color: red;
+    transform: rotate(-45deg);
+    animation: beat 1s infinite;
+    box-shadow: 0 0 20px red; /* initial glow */
+  }
+
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 90px;
+    background-color: red;
+    border-radius: 50%;
+    box-shadow: 0 0 20px red; /* glow for bumps */
+  }
+
+  .heart::before {
+    top: -50px;
+    left: 0;
+  }
+
+  .heart::after {
+    top: 0;
+    left: 50px;
+  }
+
+  @keyframes beat {
+    0%, 100% {
+      transform: rotate(-45deg) scale(1);
+      box-shadow: 0 0 20px red;
+    }
+    50% {
+      transform: rotate(-45deg) scale(1.2);
+      box-shadow: 0 0 40px red; /* stronger glow while beating */
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="heart"></div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slash Pattern with Prompt</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Slash Pattern Generator</h3>
+
+<script>
+    // Ask user for number of rows and columns
+    var rows = parseInt(prompt("Enter the number of rows:"));
+    var cols = parseInt(prompt("Enter the number of ╱╲ pairs per row:"));
+
+    var pattern = "";
+
+    for (var i = 0; i < rows; i++) {
+        for (var j = 0; j < cols; j++) {
+            pattern += "╱╲";
+        }
+        pattern += "\n"; // move to next line
+    }
+
+    // Show the pattern in an alert box
+    alert(pattern);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sort Books by Name</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Sorted Books Alphabetically by Name</h3>
+<ul id="bookList"></ul>
+
+<script>
+    // Example array of book objects
+    var books = [
+        { name: "The Road Ahead", author: "Bill Gates" },
+        { name: "Walter Isaacson", author: "Steve Jobs" },
+        { name: "The Hunger Games", author: "Suzanne Collins" },
+        { name: "1984", author: "George Orwell" }
+    ];
+
+    // Sort books alphabetically by name
+    books.sort(function(a, b) {
+        var nameA = a.name.toUpperCase(); // ignore case
+        var nameB = b.name.toUpperCase();
+        if (nameA < nameB) return -1;
+        if (nameA > nameB) return 1;
+        return 0;
+    });
+
+    // Display the sorted books on the page
+    var list = document.getElementById("bookList");
+    books.forEach(function(book) {
+        var li = document.createElement("li");
+        li.textContent = book.name + " by " + book.author;
+        list.appendChild(li);
+    });
+</script>
+
+</body>
+</html>

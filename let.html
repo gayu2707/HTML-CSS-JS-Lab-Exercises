@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Let vs Var Example</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Let vs Var Scope Example</h3>
+
+<script>
+    // Global variable
+    var index = 10;
+
+    // Some block of code
+    {
+        // Use 'let' to create a block-scoped variable
+        let index = 5; // This does NOT change the global index
+        document.write("<p>Inside block, index = " + index + "</p>");
+    }
+
+    // Global variable remains unchanged
+    document.write("<p>Outside block, global index = " + index + "</p>");
+</script>
+
+</body>
+</html>

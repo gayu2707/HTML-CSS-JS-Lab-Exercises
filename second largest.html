@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Second Largest Number</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Find Second Largest Number in an Array</h3>
+
+<script>
+    // Ask user for size of array
+    var n = parseInt(prompt("Enter the number of elements in the array:"));
+
+    // Ask user for array elements (space separated)
+    var input = prompt("Enter " + n + " numbers separated by spaces:");
+
+    // Convert input to array of numbers
+    var arr = input.trim().split(" ").map(Number);
+
+    // Remove duplicates
+    var uniqueArr = [...new Set(arr)];
+
+    // Sort array in descending order
+    uniqueArr.sort(function(a, b) {
+        return b - a;
+    });
+
+    // Get second largest
+    var secondLargest = uniqueArr[1];
+
+    // Show the second largest number
+    alert("Second Largest Number: " + secondLargest);
+</script>
+
+</body>
+</html>

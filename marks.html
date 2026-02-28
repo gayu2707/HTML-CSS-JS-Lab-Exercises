@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marks to Grade</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Enter your marks to get grade</h3>
+
+<script>
+    // Ask user to enter marks
+    var marks = parseFloat(prompt("Enter your marks:"));
+
+    var grade = "";
+
+    // Determine grade based on marks
+    if (marks > 90) {
+        grade = "AA";
+    } else if (marks > 80 && marks <= 90) {
+        grade = "AB";
+    } else if (marks > 70 && marks <= 80) {
+        grade = "BB";
+    } else if (marks > 60 && marks <= 70) {
+        grade = "BC";
+    } else if (marks > 50 && marks <= 60) {
+        grade = "CC";
+    } else if (marks > 40 && marks <= 50) {
+        grade = "CD";
+    } else if (marks > 35 && marks <= 40) {
+        grade = "DD";
+    } else {
+        grade = "FF";
+    }
+
+    // Print grade to console
+    console.log(grade);
+
+    // Show grade using alert
+    alert("Your grade is: " + grade);
+</script>
+
+</body>
+</html>

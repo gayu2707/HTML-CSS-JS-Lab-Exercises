@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Day of Date</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+        textarea {
+            width: 250px;
+            height: 120px;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Enter Dates (MM/DD/YYYY)</h3>
+<p>Enter one date per line. Enter <b>-1</b> to stop.</p>
+
+<textarea id="input"></textarea><br>
+<button onclick="findDay()">Find Day</button>
+
+<h3>Output</h3>
+<div id="result"></div>
+
+<script>
+function findDay() {
+    var text = document.getElementById("input").value;
+    var lines = text.split("\n");
+
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var out = document.getElementById("result");
+    out.innerHTML = "";
+
+    for (var i = 0; i < lines.length; i++) {
+        var line = lines[i].trim();
+
+        if (line === "-1") {
+            break;
+        }
+
+        var part = line.split("/");
+        var mm = parseInt(part[0]) - 1;
+        var dd = parseInt(part[1]);
+        var yy = parseInt(part[2]);
+
+        var d = new Date(yy, mm, dd);
+        var dayName = days[d.getDay()];
+
+        var p = document.createElement("p");
+        p.innerText = dayName;
+        out.appendChild(p);
+    }
+}
+</script>
+
+</body>
+</html>

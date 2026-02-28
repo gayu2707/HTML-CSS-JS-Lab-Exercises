@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arrow Function Array Task</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+        input, button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Enter array elements separated by commas</h3>
+<input type="text" id="arrInput" placeholder="e.g. 1,2,3,4,5"><br>
+<button onclick="processArray()">Process Array</button>
+
+<h3>Output</h3>
+<div id="output"></div>
+
+<script>
+    // Arrow function as required
+    var my_function = (arr) => {
+        return arr.map(num => {
+            num = parseInt(num); // convert string to number
+            if (num % 2 === 0) {
+                return num + 1; // even incremented by 1
+            } else {
+                return num - 1; // odd decremented by 1
+            }
+        });
+    }
+
+    function processArray() {
+        var input = document.getElementById("arrInput").value;
+        var arr = input.split(","); // split input into array
+        var result = my_function(arr); // call the arrow function
+        document.getElementById("output").innerText = result.join(", ");
+    }
+</script>
+
+</body>
+</html>
